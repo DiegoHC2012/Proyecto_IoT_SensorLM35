@@ -1,0 +1,13 @@
+ChannelIDWrite = 0;
+ChannelIDRead = 1;
+
+writeAPIKey = 'WRITE_API_KEY'
+readAPIKey = 'READ_API_KEY'
+
+data = thingSpeakRead(channelIDRead, 'Field',1, 'NumPoints', 10, 'ReadKey', readAPIKey);
+data = data(~isnan(data));
+
+averageData = mean(data);
+thingSpeakWrite(channelIDWrite, averageData, 'Field', 2, 'WriteKey', writeAPIKey);
+
+disp(data)

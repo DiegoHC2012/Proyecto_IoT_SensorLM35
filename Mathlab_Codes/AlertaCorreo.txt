@@ -1,0 +1,25 @@
+% Store the channel ID for the moisture sensor channel.
+channelID = 276330;
+
+% Provide the ThingSpeak alerts API key.  All alerts API keys start with TAK.
+alertApiKey = 'Aqui va tu ApiKey';
+
+% Set the address for the HTTTP call
+alertUrl="https://api.thingspeak.com/alerts/send";
+
+% webwrite uses weboptions to add required headers.  Alerts needs a ThingSpeak-Alerts-API-Key header.
+options = weboptions("HeaderFields", ["ThingSpeak-Alerts-API-Key", alertApiKey ]);
+
+alertSubject = sprintf("Alerta de temperatura");
+
+alertBody = ' El sensor ha sobrepasado los 35°C! ';      
+
+try
+    % Intentar enviar la alerta
+    webwrite(alertUrl , "body", alertBody, "subject", alertSubject, options);
+    % Si tiene éxito
+    fprintf("Email enviado con éxito.\n");
+catch someException
+    % Si ocurre un error
+    fprintf("Failed to send alert: %s\n", someException.message);
+end
