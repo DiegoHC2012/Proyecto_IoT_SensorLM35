@@ -11,6 +11,7 @@ Para obtener una copia local del proyecto, ejecuta el siguiente comando en la te
 ## 2. Estructura del repositorio
 Dentro del repositorio encontrarás las siguientes carpetas y archivos: 
 - README.md: Archivo con la documentación y guía de uso.
+- CAPTURAS: Directorio con las capturas del codigo funcionando.
 - main.py: Script principal para leer el sensor LM35 y enviar los datos a ThingSpeak.
 - Matlab_Codes: Directorio que contiene el código para MathWorks.
   - AlertaCorreo.txt: El envio de las alertas por correo al superar el umbral de temperaturas.
